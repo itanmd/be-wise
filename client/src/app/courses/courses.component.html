@@ -1,0 +1,91 @@
+<div class="container-fluid">
+  <h3>Courses</h3>
+  <br />
+  <form class="form-inline">
+    <div class="form-group mb-2">
+      <div class="form-group">
+        <div class="row text-center">
+          <div class="col">
+            <label for="inputPassword2" class="sr-only"
+              >Filter by category:</label
+            >
+          </div>
+          <div class="col">
+            <select>
+              <option value="" selected disabled>All courses</option>
+              <option value="">A</option>
+              <option value="">B</option>
+              <option value="">C</option>
+            </select>
+          </div>
+          <div class="col">
+            <button type="button" class="btn btn-primary btn-sm btn-floating">
+              <i class="fas fa-download">Export</i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>
+          Name
+          <!-- <button (click)="sortCustomers('name')" class="btn btn-default">
+                    <i [ngClass]="displaySort('name')"></i>
+                </button> -->
+        </th>
+        <th>
+          Price
+          <!-- <button (click)="sortCustomers('email')" class="btn btn-default">
+                    <i [ngClass]="displaySort('email')"></i>
+                </button> -->
+        </th>
+      </tr>
+    </thead>
+  </table>
+
+  <div class="accordion" id="accordionExample" *ngFor="let course of courses">
+    <div class="accordion-item">
+      <div class="accordion-header" [attr.id]="'heading' + course.code">
+        <h5
+          class="d-flex justify-content-between accordion-button collapsed"
+          type="button"
+          data-bs-toggle="collapse"
+          [attr.data-bs-target]="'#collapse' + course.code"
+          aria-expanded="true"
+          [attr.aria-controls]="'collapse' + course.code"
+        >
+          <td style="width: 50%">({{ course.code }}) {{ course.name }}</td>
+          <td style="width: 50%" class="d-flex justify-content-between">
+            {{ course.price }}₪
+          </td>
+        </h5>
+      </div>
+
+      <div
+        [attr.id]="'collapse' + course.code"
+        class="accordion-collapse collapse"
+        [attr.aria-labelledby]="'heading' + course.code"
+        data-bs-parent="#accordionExample"
+      >
+        <div class="accordion-body">
+          <p><b>Start Date:</b> {{ course.start_date | date }}</p>
+          <p><b>Number of classes:</b> {{ course.num_of_classes }}</p>
+          <p><b>Category:</b> {{ course.category_id }}</p>
+          <p><b>Description:</b> {{ course.description }}</p>
+          <p><b>Lecturer:</b> {{ course.first_name }} {{ course.last_name }}</p>
+          <P><a class="link">See more courses by this lecturer</a></P>
+          <button
+            class="align-center btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop"
+          >
+            Register Now
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
