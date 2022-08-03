@@ -59,7 +59,7 @@
         >
           <td style="width: 50%">({{ course.code }}) {{ course.name }}</td>
           <td style="width: 50%" class="d-flex justify-content-between">
-            {{ course.price }}₪
+            {{ course.price }}$
           </td>
         </h5>
       </div>
@@ -73,7 +73,7 @@
         <div class="accordion-body">
           <p><b>Start Date:</b> {{ course.start_date | date }}</p>
           <p><b>Number of classes:</b> {{ course.num_of_classes }}</p>
-          <p><b>Category:</b> {{ course.category_id }}</p>
+          <p><b>Category:</b> {{ course.category }}</p>
           <p><b>Description:</b> {{ course.description }}</p>
           <p><b>Lecturer:</b> {{ course.first_name }} {{ course.last_name }}</p>
           <P><a class="link">See more courses by this lecturer</a></P>

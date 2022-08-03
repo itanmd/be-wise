@@ -16,7 +16,7 @@ export interface Course {
   num_of_classes: number;
   start_date: Date;
   price: number;
-  category_id: number;
+  category: number;
   first_name: string;
   last_name: string;
   lecturer_id: number;
