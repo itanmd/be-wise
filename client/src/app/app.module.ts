@@ -6,9 +6,10 @@ import { CoreModule } from './core/core.module';
 import { CoursesModule } from './courses/courses.module';
 import { LecturersModule } from './lecturers/lecturers.module';
 import { SharedModule } from './shared/shared.module';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, HeaderComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
