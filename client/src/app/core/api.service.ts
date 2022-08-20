@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Course, Lecturer } from '../shared/types';
+import { Course, Lecturer, FilePath } from '../shared/types';
 
 @Injectable({
   providedIn: 'root',
@@ -22,6 +22,21 @@ export class ApiService {
 
   getCoursesList(): Observable<Array<Course>> {
     return this.GET<Array<Course>>(`Courses`);
+  }
+
+  getSortedCourses(
+    column: string,
+    direction: string
+  ): Observable<Array<Course>> {
+    // return this.http.get<Array<Course>>(
+    //   `${environment.serverUrl}/courses?column=${column}&sort=${direction}`
+    return this.GET<Array<Course>>(
+      `customers?column=${column}&sort=${direction}`
+    );
+  }
+
+  exportCourses(): Observable<FilePath> {
+    return this.http.get<FilePath>(`${environment.serverUrl}/courses/export`);
   }
 
   GET<T>(url: string): Observable<T> {

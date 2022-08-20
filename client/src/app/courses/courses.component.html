@@ -11,16 +11,24 @@
             >
           </div>
           <div class="col">
-            <select>
-              <option value="" selected disabled>All courses</option>
-              <option value="">A</option>
-              <option value="">B</option>
-              <option value="">C</option>
+            <select [(ngModel)]="filterCategory">
+              <option [ngValue]="undefined">All</option>
+              <option
+                *ngFor="let course of courses"
+                [ngValue]="course.category"
+              >
+                {{ course.category }}
+              </option>
             </select>
           </div>
           <div class="col">
-            <button type="button" class="btn btn-primary btn-sm btn-floating">
-              <i class="fas fa-download">Export</i>
+            <button
+              (click)="exportCoursesData()"
+              type="button"
+              class="btn btn-primary btn-sm btn-floating"
+            >
+              <i class="bi-download me-2"></i>
+              Export
             </button>
           </div>
         </div>
@@ -32,15 +40,15 @@
       <tr>
         <th>
           Name
-          <!-- <button (click)="sortCustomers('name')" class="btn btn-default">
-                    <i [ngClass]="displaySort('name')"></i>
-                </button> -->
+          <button (click)="sortCourses('name')" class="btn btn-default">
+            <i [ngClass]="displaySort('name')"></i>
+          </button>
         </th>
         <th>
           Price
-          <!-- <button (click)="sortCustomers('email')" class="btn btn-default">
-                    <i [ngClass]="displaySort('email')"></i>
-                </button> -->
+          <button (click)="sortCourses('price')" class="btn btn-default">
+            <i [ngClass]="displaySort('price')"></i>
+          </button>
         </th>
       </tr>
     </thead>

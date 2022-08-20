@@ -21,3 +21,14 @@ export interface Course {
   last_name: string;
   lecturer_id: number;
 }
+
+export interface FilePath {
+  name: string;
+}
+
+export type sortColumn = 'name' | 'price';
+
+export interface CourseSort {
+  column: sortColumn;
+  dirAsc: boolean;
+}

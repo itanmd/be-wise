@@ -7,5 +7,6 @@ const fileMgmt = require('../shared/fileMgmt');
 const lecturers = require('../controllers/courses');
 
 router.get('/', cm.getCoursesList);
+router.get ('/export', cm.exportCourses);
 
 module.exports = router;

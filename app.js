@@ -59,9 +59,9 @@ app.use('/courses', coursesRouter);
 
 
 // catch 404 err forward error handler
-// app.use(function (req, res, next) {
-//     next(createError(404));
-// })
+app.use(function (req, res, next) {
+    next(createError(404));
+})
 
 // custom error handler
 app.use(function (err, req, res, next) {

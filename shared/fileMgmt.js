@@ -21,14 +21,13 @@ module.exports = {
                 stream.end();
             });
 
-            stream.on('finish', function () {
-                res.json({
-                    name: fileName
-                });
+          stream.on('finish', function () {
+                res.json({ name: fileName });
             });
-        } catch (err) {
+}
+catch (err) {
             res.status(400).send('Error');
             // throw err;
         }
-    },
-}
+         },
+        }
