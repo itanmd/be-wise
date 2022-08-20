@@ -15,3 +15,10 @@ li {
 .form-inline {
   padding-bottom: 30px;
 }
+
+.accordion-button::after {
+  background-image: url("https://www.flaticon.com/svg/vstatic/svg/3917/3917757.svg?token=exp=1661013114~hmac=860e828abcc13c7b16d043e87c6c560e");
+}
+.accordion-button:not(.collapsed)::after {
+  background-image: url("https://www.flaticon.com/svg/vstatic/svg/3917/3917194.svg?token=exp=1661013185~hmac=e04ce3f966c8630063803ffedcd7afbd");
+}
