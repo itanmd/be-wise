@@ -8,5 +8,8 @@ const lecturers = require('../controllers/courses');
 
 router.get('/', cm.getCoursesList);
 router.get ('/export', cm.exportCourses);
+router.get ('/filter', cm.getFilteredCourses);
+router.get ('/categories', cm.getCategories);
+
 
 module.exports = router;

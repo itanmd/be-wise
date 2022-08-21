@@ -26,7 +26,15 @@ export interface FilePath {
   name: string;
 }
 
+export interface Category {
+  id: number;
+  name: string;
+  description: string;
+}
+
 export type sortColumn = 'name' | 'price';
+
+export type categoriesValue = Category['id'] | 'All';
 
 export interface CourseSort {
   column: sortColumn;

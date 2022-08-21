@@ -7,6 +7,8 @@ import {
   FilePath,
   CourseSort,
   sortColumn,
+  Category,
+  categoriesValue,
 } from '../shared/types';
 
 @Component({
@@ -21,14 +23,15 @@ export class CoursesComponent implements OnInit {
   courseCode?: string;
   openCourse?: number;
   btn?: Element;
-  filter?: string;
-  filterCategory!: number | undefined;
   tableSort!: CourseSort;
+  categories!: Array<Category>;
+  selectedCategory: categoriesValue = 'All';
 
   constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {
     this.getCourses();
+    this.getCategories();
 
     this.tableSort = {
       column: 'name',
@@ -46,6 +49,30 @@ export class CoursesComponent implements OnInit {
     });
   }
 
+  getCategories() {
+    this.apiService.getCategories().subscribe({
+      next: (data: Array<Category>) => {
+        this.categories = data;
+      },
+      error: (err) => console.error(err),
+    });
+  }
+
+  getCoursesByCategory() {
+    if (this.selectedCategory === 'All') {
+      this.getCourses();
+      return;
+    }
+    this.apiService
+      .getFilteredCourses('category', this.selectedCategory)
+      .subscribe({
+        next: (data: Array<Course>) => {
+          this.courses = data;
+        },
+        error: (err) => console.error(err),
+      });
+  }
+
   exportCoursesData() {
     this.apiService.exportCourses().subscribe({
       next: (data: FilePath) => {
@@ -53,21 +80,6 @@ export class CoursesComponent implements OnInit {
       },
       error: (err) => console.error(err),
     });
-  }
-
-  filterCategoryFunc(cat: number): boolean {
-    const value = this.filterCategory;
-    console.log(value);
-    console.log('!!!!', this.filterCategory);
-
-    if (!value) {
-      return true;
-    }
-    if (value === cat) {
-      return true;
-    } else {
-      return false;
-    }
   }
 
   sortCourses(column: sortColumn) {
