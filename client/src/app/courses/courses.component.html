@@ -55,7 +55,7 @@
   </table>
 
   <div class="accordion" id="accordionExample" *ngFor="let course of courses">
-    <div class="accordion-item">
+    <div class="accordion-item" *ngIf="filterCategoryFunc(course.category)">
       <div class="accordion-header" [attr.id]="'heading' + course.code">
         <h5
           class="d-flex justify-content-between accordion-button collapsed"

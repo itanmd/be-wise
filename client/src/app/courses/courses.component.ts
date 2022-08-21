@@ -22,7 +22,7 @@ export class CoursesComponent implements OnInit {
   openCourse?: number;
   btn?: Element;
   filter?: string;
-  filterCategory!: string | undefined;
+  filterCategory!: number | undefined;
   tableSort!: CourseSort;
 
   constructor(private apiService: ApiService) {}
@@ -55,9 +55,10 @@ export class CoursesComponent implements OnInit {
     });
   }
 
-  filterCategoryFunc(cat: string): boolean {
+  filterCategoryFunc(cat: number): boolean {
     const value = this.filterCategory;
     console.log(value);
+    console.log('!!!!', this.filterCategory);
 
     if (!value) {
       return true;
